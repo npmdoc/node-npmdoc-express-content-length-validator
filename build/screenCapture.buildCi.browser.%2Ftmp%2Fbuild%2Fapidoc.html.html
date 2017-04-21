@@ -1,0 +1,209 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/ericmdantas/express-content-length-validator">express-content-length-validator (v1.0.0)</a>
+</h1>
+<h4>Make sure your application is not vulnerable to large payload attacks</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-content-length-validator">module express-content-length-validator</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-content-length-validator.validateMax">
+            function <span class="apidocSignatureSpan">express-content-length-validator.</span>validateMax
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-content-length-validator.</span>index</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-content-length-validator.index">module express-content-length-validator.index</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-content-length-validator.index.validateMax">
+            function <span class="apidocSignatureSpan">express-content-length-validator.index.</span>validateMax
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-content-length-validator" id="apidoc.module.express-content-length-validator">module express-content-length-validator</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-content-length-validator.validateMax" id="apidoc.element.express-content-length-validator.validateMax">
+        function <span class="apidocSignatureSpan">express-content-length-validator.</span>validateMax
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateMax = function (opts)
+{
+    var _opts = opts || {};
+
+    var _maxLength = _opts.max || _contentLength.DEFAULT_MAX_LENGTH;
+    var _status = _opts.status || _contentLength.DEFAULT_ERROR_STATUS;
+    var _message = _opts.message || _contentLength.DEFAULT_ERROR_MESSAGE;
+
+    var _middleware = function(request, response, next)
+    {
+        var _contentLength = request.headers['content-length'] ? parseInt(request.headers['content-length']) : null;
+
+        if (_contentLength &gt; _maxLength)
+        {
+            response.status(_status).json({message: _message});
+
+            return;
+        }
+
+        next();
+    }
+
+    return _middleware;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    var contentLength = require('express-content-length-validator');
+
+```
+
+You'll have a single function to work with: ```validateMax```.
+
+## contentLength.<span class="apidocCodeKeywordSpan">validateMax</span>(options)
+
+```options``` is an object with three properties:
+
+- ```max```, which defaults to 999;
+- ```status```, which defaults to 400;
+- ```message```, which defaults to "Invalid payload; too big.".
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-content-length-validator.index" id="apidoc.module.express-content-length-validator.index">module express-content-length-validator.index</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-content-length-validator.index.validateMax" id="apidoc.element.express-content-length-validator.index.validateMax">
+        function <span class="apidocSignatureSpan">express-content-length-validator.index.</span>validateMax
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateMax = function (opts)
+{
+    var _opts = opts || {};
+
+    var _maxLength = _opts.max || _contentLength.DEFAULT_MAX_LENGTH;
+    var _status = _opts.status || _contentLength.DEFAULT_ERROR_STATUS;
+    var _message = _opts.message || _contentLength.DEFAULT_ERROR_MESSAGE;
+
+    var _middleware = function(request, response, next)
+    {
+        var _contentLength = request.headers['content-length'] ? parseInt(request.headers['content-length']) : null;
+
+        if (_contentLength &gt; _maxLength)
+        {
+            response.status(_status).json({message: _message});
+
+            return;
+        }
+
+        next();
+    }
+
+    return _middleware;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    var contentLength = require('express-content-length-validator');
+
+```
+
+You'll have a single function to work with: ```validateMax```.
+
+## contentLength.<span class="apidocCodeKeywordSpan">validateMax</span>(options)
+
+```options``` is an object with three properties:
+
+- ```max```, which defaults to 999;
+- ```status```, which defaults to 400;
+- ```message```, which defaults to "Invalid payload; too big.".
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
